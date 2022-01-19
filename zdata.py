@@ -63,10 +63,10 @@ def doWork():
         listing_directory[host] = indexof_extended(url, content, requests_session)
         q.task_done()
 
-for i in range(concurrent):
-    t = Thread(target=doWork)
-    t.daemon = True
-    t.start()
+for _ in range(concurrent):
+  t = Thread(target=doWork)
+  t.daemon = True
+  t.start()
 
 def indexof_extended(url, content, sess, level=0):
   global requests_session
